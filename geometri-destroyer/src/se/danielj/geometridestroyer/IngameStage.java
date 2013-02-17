@@ -1,9 +1,6 @@
 package se.danielj.geometridestroyer;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -11,6 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class IngameStage extends Stage {
 	
@@ -26,33 +26,18 @@ public class IngameStage extends Stage {
 		
 		setViewport(Constants.STAGE_WIDTH, Constants.STAGE_HEIGHT, false);
 		
-		FreeTypeFontGenerator g = new FreeTypeFontGenerator(Gdx.files.internal("fonts/gtw.ttf"));
-		BitmapFont font = g.generateFont(40);
-		
 		LabelStyle style = new LabelStyle();
-		style.font = font;
-		style.fontColor = new Color(0.5f, 0, 0, 1);
+		style.font = FontManager.getNormalFont();
+		style.fontColor = new Color(0, 0, 0, 1);
 		objectCounter = new Label("Objects: " + (world.getBodyCount() - 1) + " Object left: " + geometriDestroyer.boxesLeft, style);
-		objectCounter .setPosition(20, Constants.STAGE_HEIGHT - 70);
+		objectCounter.setPosition(20, Constants.STAGE_HEIGHT - 70);
 		addActor(objectCounter );
 		
-		Label exit = new Label("Exit", style);
-		exit.setPosition(20, Constants.STAGE_HEIGHT - 130);
-		exit.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				core.setScreen(core.levelScreen);
-				return true;
-			}
-		});
-		addActor(exit);
-		
-		gameOverMenu = new GameOverMenu();
+		gameOverMenu = new GameOverMenu(core);
 		gameOverMenu.setVisible(false);
 		addActor(gameOverMenu);
 		
-		victoryMenu = new VictoryMenu();
+		victoryMenu = new VictoryMenu(core);
 		victoryMenu.setVisible(false);
 		addActor(victoryMenu);
 	}
@@ -77,28 +62,95 @@ public class IngameStage extends Stage {
 	}
 	
 	private class VictoryMenu extends Menu {
-		public VictoryMenu() {
+		public VictoryMenu(final Core core) {
 			super("Victory");
+			addButton("Replay Level", 1, new MenuButtonListener() {
+				@Override
+				protected void action() {
+					geometriDestroyer.restart();
+				}
+			});
+			addButton("Return to Main Menu", 2, new MenuButtonListener() {
+				@Override
+				protected void action() {
+					core.setScreen(core.levelScreen);
+				}
+			});
 		}
 	}
 	
 	private class GameOverMenu extends Menu {
-		public GameOverMenu() {
+		public GameOverMenu(final Core core) {
 			super("Game Over");
+			addButton("Retry Level", 1, new MenuButtonListener() {
+				@Override
+				protected void action() {
+					geometriDestroyer.restart();
+				}
+			});
+			addButton("Return to Main Menu", 2, new MenuButtonListener() {
+				@Override
+				protected void action() {
+					core.setScreen(core.levelScreen);
+				}
+			});
 		}
 	}
 	
 	private class Menu extends Group {
 		public Menu(String subject) {
-			FreeTypeFontGenerator g = new FreeTypeFontGenerator(Gdx.files.internal("fonts/gtw.ttf"));
-			BitmapFont font = g.generateFont(40);
-			
 			LabelStyle style = new LabelStyle();
-			style.font = font;
-			style.fontColor = new Color(0.5f, 0, 0, 1);
+			style.font = FontManager.getNormalFont();
+			style.fontColor = new Color(0, 0, 0, 1);
 			Label subjectLabel = new Label(subject, style);
 			subjectLabel.setPosition((Constants.STAGE_WIDTH - subjectLabel.getWidth())/2, Constants.STAGE_HEIGHT - 200);
 			this.addActor(subjectLabel);
+		}
+		
+		protected void addButton(String label, int menuNumber, InputListener inputListener) {
+			this.addActor(new MenuButton(label, menuNumber, inputListener));
+		}
+		
+		protected class MenuButton extends Group {
+			TextButton button;
+			public MenuButton(String label, int menuNumber, InputListener inputListener) {
+				final TextButtonStyle style = new TextButtonStyle();
+				style.font = FontManager.getNormalFont();
+				style.up = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.BLANK));
+				style.down = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.BLANK));
+				style.fontColor = new Color(0.5f, 0, 0, 1);
+				style.downFontColor = new Color(0, 0.4f, 0, 1);
+				
+				button = new TextButton(label, style);
+				button.setPosition((Constants.STAGE_WIDTH - button.getWidth())/2, Constants.STAGE_HEIGHT - 200 - menuNumber * 100);
+				this.addListener(inputListener);
+				this.addActor(button);
+			}
+			public TextButton getButton() {
+				return button;
+			}
+		}
+		
+		protected abstract class MenuButtonListener extends InputListener {
+			private boolean pressed = false;
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				pressed = true;
+				return true;
+			}
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				if (pressed)
+					action();
+			}
+			@Override
+			public void touchDragged(InputEvent event, float x, float y,
+					int pointer) {
+				pressed = ((MenuButton)event.getListenerActor()).getButton().isPressed();
+			}
+			protected abstract void action();
 		}
 	}
 }

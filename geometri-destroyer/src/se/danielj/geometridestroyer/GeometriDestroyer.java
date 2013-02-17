@@ -7,6 +7,7 @@ import java.util.List;
 import se.danielj.geometridestroyer.SpriteManager.Sprites;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
@@ -22,7 +23,6 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.QueryCallback;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class GeometriDestroyer implements Screen, InputProcessor {
 	
@@ -40,8 +40,11 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	
 	private VictoryChecker victoryChecker;
 	
+	private int currentLevel;
+	
 	public GeometriDestroyer(Core core, InputMultiplexer inputMultiplexer) {
 		SpriteManager.init();
+		FontManager.init();
 		
 		this.core = core;
 		
@@ -51,7 +54,6 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		batch = new SpriteBatch();
 		
 		world = new World(new Vector2(0, -40), true); 
-		
 		
 //		debugRenderer = new Box2DDebugRenderer();
 		
@@ -86,6 +88,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	}
 	
 	public void setLevel(int level) {
+		this.currentLevel = level;
 		{
 			Iterator<Body> i = world.getBodies();
 			List<Body> bodies = new LinkedList<Body>();
@@ -94,31 +97,31 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 			}
 			for (Body body : bodies) {
 				world.destroyBody(body);
-				System.out.println(world.getBodyCount());
 			}
 		}
 		EntityCreator.createFloor(world);
 		switch (level) {
 		case 1:
-			EntityCreator.createDestroyableBox(world, 5, 5, 10, 10);
-			EntityCreator.createSteelBox(world, 15, 10, 10, 10);
-			EntityCreator.createPlayerBox(world, 22, 20, 5, 5);
-			boxesLeft = 2;
+			EntityCreator.createSteelBox(world, 40, 5, 10, 10);
+			EntityCreator.createDestroyableBox(world, 40, 15, 10, 10);
+			EntityCreator.createSteelBox(world, 40, 25, 10, 10);
+			EntityCreator.createPlayerBox(world, 40, 32.5f, 5, 5);
+			boxesLeft = 1;
 			break;
 		case 2:
-			EntityCreator.createDestroyableBox(world, 5, 5, 10, 10);
-			EntityCreator.createDestroyableBox(world, 15, 5, 10, 10);
 			EntityCreator.createDestroyableBox(world, 25, 5, 10, 10);
 			EntityCreator.createDestroyableBox(world, 35, 5, 10, 10);
-			EntityCreator.createDestroyableBox(world, 10, 15, 10, 10);
-			EntityCreator.createDestroyableBox(world, 20, 15, 10, 10);
+			EntityCreator.createDestroyableBox(world, 45, 5, 10, 10);
+			EntityCreator.createDestroyableBox(world, 55, 5, 10, 10);
 			EntityCreator.createDestroyableBox(world, 30, 15, 10, 10);
-			EntityCreator.createDestroyableBox(world, 15, 25, 10, 10);
-			EntityCreator.createDestroyableBox(world, 25, 25, 10, 10);
-			EntityCreator.createPlayerBox(world, 20, 35, 10, 10);
-			boxesLeft = 2;
+			EntityCreator.createDestroyableBox(world, 40, 15, 10, 10);
+			EntityCreator.createDestroyableBox(world, 50, 15, 10, 10);
+			EntityCreator.createDestroyableBox(world, 35, 25, 10, 10);
+			EntityCreator.createDestroyableBox(world, 45, 25, 10, 10);
+			EntityCreator.createPlayerBox(world, 40, 35, 10, 10);
+			boxesLeft = 8;
 			break;
-		default:
+		case 3:
 			for (int i = 15; i <= 15 + 9 * 5; i += 9) {
 				EntityCreator.createDestroyableBox(world, i, 2.5f, 5, 5);
 			}
@@ -135,7 +138,19 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 				EntityCreator.createDestroyableBox(world, i, 22.5f, 5, 5);
 			}
 			EntityCreator.createPlayerBox(world, 37.5f, 27.5f, 5, 5);
-			boxesLeft = 2;
+			boxesLeft = 19;
+			break;
+		case 4:
+			EntityCreator.createDestroyableStar(world, 32, 5, 10, 10);
+			EntityCreator.createDestroyableStar(world, 48, 5, 10, 10);
+			EntityCreator.createDestroyableStar(world, 32, 15, 10, 10);
+			EntityCreator.createDestroyableStar(world, 48, 15, 10, 10);
+			EntityCreator.createDestroyableStar(world, 32, 25, 10, 10);
+			EntityCreator.createDestroyableStar(world, 48, 25, 10, 10);
+			EntityCreator.createPlayerBox(world, 40, 35, 10, 10);
+			boxesLeft = 5;
+			break;
+		default:
 			break;
 		}
 	}
@@ -150,12 +165,19 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		stage.gameOver();
 		victoryChecker = new NullVictoryChecker();
 	}
+	
+	public void restart() {
+		show();
+		setLevel(currentLevel);
+	}
 
 	@Override
 	public void dispose() {
 		batch.dispose();
 		stage.dispose();
 		world.dispose();
+		SpriteManager.dispose();
+		FontManager.dispose();
 	}
 
 	@Override
@@ -203,6 +225,9 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
+		if (Input.Keys.ESCAPE == keycode || Input.Keys.BACK == keycode) {
+			core.setScreen(core.levelScreen);
+		}
 		return false;
 	}
 
@@ -239,10 +264,11 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 									boolean sleeping = true;
 									Iterator<Body> i = world.getBodies();
 									while (i.hasNext()) {
-										// Draw entities
 										Body body = i.next();
-										if (body.isAwake()) {
-											sleeping = false;
+										if (body.getUserData() instanceof Entity) {
+											if (body.isAwake()) {
+												sleeping = false;
+											}
 										}
 									}
 									if (sleeping) {

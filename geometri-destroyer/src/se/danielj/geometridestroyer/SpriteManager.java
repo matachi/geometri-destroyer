@@ -17,6 +17,9 @@ public class SpriteManager {
 		public static final String BLUE_BOX = "blue_box";
 		public static final String GREY_BOX = "grey_box";
 		public static final String BACKGROUND = "background";
+		public static final String DARK_BACKGROUND = "background_dark";
+		public static final String BLANK = "blank";
+		public static final String GREEN_STAR = "green_star";
 	}
 	
 	public static void init() {
@@ -27,6 +30,10 @@ public class SpriteManager {
 		for (AtlasRegion r : textureAtlas.getRegions()) {
 			sprites.put(r.name, r);
 		}
+	}
+	
+	public static void dispose() {
+		textureAtlas.dispose();
 	}
 	
 	public static AtlasRegion getSprite(String sprite) {

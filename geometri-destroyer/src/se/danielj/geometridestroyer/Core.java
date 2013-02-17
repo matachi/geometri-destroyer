@@ -19,6 +19,7 @@ public class Core extends Game {
 		game = new GeometriDestroyer(this, gameInput);
 		levelScreen = new LevelScreen(this, levelScreenInput);
 		Gdx.input.setInputProcessor(levelScreenInput);
+		Gdx.input.setCatchBackKey(true);
 		setScreen(levelScreen);
 	}
 

@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="geometry.svg">
   <defs
      id="defs4">
     <linearGradient
@@ -122,6 +122,15 @@
        id="linearGradient5486"
        xlink:href="#linearGradient5463-6"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5219-0"
+       id="linearGradient3897"
+       x1="99"
+       y1="602.43719"
+       x2="171.83185"
+       y2="602.43719"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -130,9 +139,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="382.4399"
-     inkscape:cy="567.08736"
+     inkscape:zoom="1"
+     inkscape:cx="56.02358"
+     inkscape:cy="424.68277"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -178,5 +187,14 @@
        height="100"
        x="346"
        y="401.86218" />
+    <path
+       style="fill:url(#linearGradient3897);fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none"
+       d="m 140,602.36218 -40,-50 50,40 50,-40 -40,50 40,50 -50,-40 c 0,0 -49.56951,39.57665 -50,40 -0.356345,0.35043 40,-50 40,-50 z"
+       id="path3121"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccsc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/green_star.png"
+       inkscape:export-xdpi="88.615387"
+       inkscape:export-ydpi="88.615387" />
   </g>
 </svg>
