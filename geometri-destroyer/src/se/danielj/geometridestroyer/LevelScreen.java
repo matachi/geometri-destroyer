@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 public class LevelScreen implements Screen {
 
@@ -110,16 +112,39 @@ public class LevelScreen implements Screen {
 		});
 		stage.addActor(level5);
 		inputMultiplexer.addProcessor(stage);
+		
+		Table table = new Table();
+//		table.setPosition(300, 100);
+		table.setSize(200, 300);
+		table.setBounds(0, 0, 1000, 1000);
+//		table.setFillParent(true);
+		table.debug();
+		table.row();
+		table.add(new Label("HEJ", style)).width(100).height(100);
+		table.row();
+		table.add(new Label("HEJ", style)).width(100).height(100);
+		table.row();
+		table.add(new Label("HEJ", style)).width(100).height(100);
+		table.row();
+		table.add(new Label("HEJ", style)).width(100).height(100);
+		table.row();
+		table.add(new Label("HEJ", style)).width(100).height(100);
+		ScrollPane scrollPane = new ScrollPane(table);
+		scrollPane.setPosition(300, 100);
+		scrollPane.setSize(100, 250);
+		scrollPane.setScrollbarsOnTop(true);
+		scrollPane.setForceOverscroll(true, true);
+		stage.addActor(scrollPane);
 	}
 
 	@Override
 	public void render(float delta) {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClearColor(0.5f, 0, 0, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		batch.draw(SpriteManager.getSprite(Sprites.DARK_BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
+//		batch.draw(SpriteManager.getSprite(Sprites.DARK_BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
 		batch.end();
 		
 		stage.draw();
