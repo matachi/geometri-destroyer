@@ -1,7 +1,5 @@
 package se.danielj.geometridestroyer;
 
-import se.danielj.geometridestroyer.SpriteManager.Sprites;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -15,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class LevelScreen implements Screen {
 
@@ -38,6 +38,7 @@ public class LevelScreen implements Screen {
 		LabelStyle style = new LabelStyle();
 		style.font = FontManager.getNormalFont();
 		style.fontColor = new Color(1, 1, 1, 1);
+		
 		Label level1 = new Label("Level 1", style);
 		level1.setPosition(20, Constants.STAGE_HEIGHT - 70);
 		level1.addListener(new InputListener() {
@@ -114,8 +115,9 @@ public class LevelScreen implements Screen {
 		inputMultiplexer.addProcessor(stage);
 		
 		Table table = new Table();
+		table.debug();
 //		table.setPosition(300, 100);
-		table.setSize(200, 300);
+//		table.setSize(200, 300);
 		table.setBounds(0, 0, 1000, 1000);
 //		table.setFillParent(true);
 		table.debug();
@@ -130,11 +132,26 @@ public class LevelScreen implements Screen {
 		table.row();
 		table.add(new Label("HEJ", style)).width(100).height(100);
 		ScrollPane scrollPane = new ScrollPane(table);
+		Label l = new Label("HEJJJJJJJ", style);
+		l.setWidth(500);
+		l.setHeight(500);
+		l.setColor(new Color(0, 0, 0, 1));
+//		ScrollPane scrollPane = new ScrollPane(l);
 		scrollPane.setPosition(300, 100);
-		scrollPane.setSize(100, 250);
-		scrollPane.setScrollbarsOnTop(true);
-		scrollPane.setForceOverscroll(true, true);
+		scrollPane.setSize(600, 300);
+//		scrollPane.setScrollbarsOnTop(true);
+		scrollPane.setFadeScrollBars(false);
+		ScrollPaneStyle scrollPaneStyle = new ScrollPaneStyle();
+//		scrollPaneStyle.hScroll = SpriteManager.getSprite(SpriteManager.Sprites.BLUE_BOX);
+		scrollPaneStyle.vScrollKnob = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.BLUE_BOX));
+		scrollPane.setStyle(scrollPaneStyle);
+//		scrollPane.
+//		scrollPane.setColor(new Color(1, 1, 1, 1));
+//		scrollPane.setFillParent(true);
+//		scrollPane.setScrollingDisabled(false, false);
+//		scrollPane.setBounds(300, 100, 100, 50);
 		stage.addActor(scrollPane);
+//		stage.addActor(table);
 	}
 
 	@Override
@@ -147,6 +164,7 @@ public class LevelScreen implements Screen {
 //		batch.draw(SpriteManager.getSprite(Sprites.DARK_BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
 		batch.end();
 		
+		stage.act(Gdx.graphics.getDeltaTime());
 		stage.draw();
 	}
 
@@ -185,5 +203,4 @@ public class LevelScreen implements Screen {
 		// TODO Auto-generated method stub
 
 	}
-
 }
