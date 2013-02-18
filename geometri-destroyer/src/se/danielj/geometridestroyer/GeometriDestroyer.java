@@ -151,19 +151,19 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 			boxesLeft = 5;
 			break;
 		case 5:
-			EntityCreator.createDestroyableStar(world, 25.1f, 2.5f, 5, 5);
-			EntityCreator.createDestroyableStar(world, 35.05f, 2.5f, 5, 5);
-			EntityCreator.createDestroyableStar(world, 44.95f, 2.5f, 5, 5);
-			EntityCreator.createDestroyableStar(world, 54.90f, 2.5f, 5, 5);
+			EntityCreator.createDestroyableStar(world, 10.2f, 5, 10, 10);
+			EntityCreator.createDestroyableStar(world, 30.1f, 5, 10, 10);
+			EntityCreator.createDestroyableStar(world, 49.90f, 5, 10, 10);
+			EntityCreator.createDestroyableStar(world, 69.80f, 5, 10, 10);
 			
-			EntityCreator.createDestroyableStar(world, 30.08f, 7.5f, 5, 5);
-			EntityCreator.createDestroyableStar(world, 40, 7.5f, 5, 5);
-			EntityCreator.createDestroyableStar(world, 49.92f, 7.5f, 5, 5);
+			EntityCreator.createDestroyableStar(world, 20.16f, 15, 10, 10);
+			EntityCreator.createDestroyableStar(world, 40, 15, 10, 10);
+			EntityCreator.createDestroyableStar(world, 59.85f, 15, 10, 10);
 			
-			EntityCreator.createDestroyableStar(world, 35.05f, 12.5f, 5, 5);
-			EntityCreator.createDestroyableStar(world, 44.935f, 12.5f, 5, 5);
+			EntityCreator.createDestroyableStar(world, 30.1f, 25, 10, 10);
+			EntityCreator.createDestroyableStar(world, 49.935f, 25, 10, 10);
 			
-			EntityCreator.createPlayerStar(world, 39.97f, 17.5f, 5, 5);
+			EntityCreator.createPlayerStar(world, 39.97f, 35, 10, 10);
 			boxesLeft = 7;
 			break;
 		default:
