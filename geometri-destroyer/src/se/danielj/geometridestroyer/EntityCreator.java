@@ -56,6 +56,13 @@ public class EntityCreator {
 		return body;
 	}
 	
+	public static Entity createPlayerStar(World world, float x, float y, float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.BLUE_STAR), width, height, false, true);
+		starEntity(world, e, x, y, width, height);
+		return e;
+	}
+	
 	public static Entity createDestroyableStar(World world, float x, float y, float width, float height) {
 		Entity e = new Entity(
 				SpriteManager.getSprite(SpriteManager.Sprites.GREEN_STAR), width, height, true, false);
@@ -64,6 +71,12 @@ public class EntityCreator {
 	}
 	
 	private static Body starEntity(World world, Entity entity, float x, float y, float width, float height) {
+		float sideW = width / 2;
+		float sideH = height / 2;
+		float diffW = sideW - sideW * 0.02f;
+		float diffH = sideH - sideH * 0.02f;
+		float innerW = width / 10;
+		float innerH = height / 10;
 		BodyDef bodyDef = new BodyDef();
 		bodyDef.type = BodyType.DynamicBody;
 		bodyDef.position.set(x, y);
@@ -71,7 +84,7 @@ public class EntityCreator {
 		body.setUserData(entity);
 
 		PolygonShape shape = new PolygonShape();
-		Vector2[] vertices = {new Vector2(-5, 5), new Vector2(-5, 4.9f), new Vector2(-1, 0), new Vector2(0, 0), new Vector2(0, 1), new Vector2(-4.9f, 5)};
+		Vector2[] vertices = {new Vector2(-sideW, sideH), new Vector2(-sideW, diffH), new Vector2(-innerW, 0), new Vector2(0, 0), new Vector2(0, innerH), new Vector2(-diffW, sideH)};
 		shape.set(vertices);
 		
 		FixtureDef fixtureDef = new FixtureDef();
@@ -83,21 +96,21 @@ public class EntityCreator {
 		body.createFixture(fixtureDef);
 		
 		shape = new PolygonShape();
-		vertices = new Vector2[]{new Vector2(5, 5), new Vector2(4.9f, 5), new Vector2(0, 1), new Vector2(0, 0), new Vector2(1, 0), new Vector2(5, 4.9f)};
+		vertices = new Vector2[]{new Vector2(sideW, sideH), new Vector2(diffW, sideH), new Vector2(0, innerH), new Vector2(0, 0), new Vector2(innerW, 0), new Vector2(sideW, diffH)};
 		shape.set(vertices);
 
 		fixtureDef.shape = shape;
 		body.createFixture(fixtureDef);
 		
 		shape = new PolygonShape();
-		vertices = new Vector2[]{new Vector2(5, -5), new Vector2(5, -4.9f), new Vector2(0, 1), new Vector2(0, 0), new Vector2(-1, 0), new Vector2(4.9f, -5)};
+		vertices = new Vector2[]{new Vector2(sideW, -sideH), new Vector2(sideW, -diffH), new Vector2(0, innerH), new Vector2(0, 0), new Vector2(-innerW, 0), new Vector2(diffW, -sideH)};
 		shape.set(vertices);
 
 		fixtureDef.shape = shape;
 		body.createFixture(fixtureDef);
 		
 		shape = new PolygonShape();
-		vertices = new Vector2[]{new Vector2(-5, -5), new Vector2(-4.9f, -5), new Vector2(0, -1), new Vector2(0, 0), new Vector2(-1, 0), new Vector2(-5, -4.9f)};
+		vertices = new Vector2[]{new Vector2(-sideW, -sideH), new Vector2(-diffW, -sideH), new Vector2(0, -innerH), new Vector2(0, 0), new Vector2(-innerW, 0), new Vector2(-sideW, -diffH)};
 		shape.set(vertices);
 
 		fixtureDef.shape = shape;

@@ -99,6 +99,21 @@ public class LevelScreen implements Screen {
 		});
 		stage.addActor(level4);
 		inputMultiplexer.addProcessor(stage);
+		
+		Label level5 = new Label("Level 5", style);
+		level5.setPosition(20, Constants.STAGE_HEIGHT - 310);
+		level5.addListener(new InputListener() {
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				LevelScreen.this.core.game.setLevel(5);
+				LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
+				return true;
+			}
+			
+		});
+		stage.addActor(level5);
+		inputMultiplexer.addProcessor(stage);
 	}
 
 	@Override

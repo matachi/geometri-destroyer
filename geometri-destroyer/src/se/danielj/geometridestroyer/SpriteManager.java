@@ -20,6 +20,7 @@ public class SpriteManager {
 		public static final String DARK_BACKGROUND = "background_dark";
 		public static final String BLANK = "blank";
 		public static final String GREEN_STAR = "green_star";
+		public static final String BLUE_STAR = "blue_star";
 	}
 	
 	public static void init() {

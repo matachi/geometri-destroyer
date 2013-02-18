@@ -17,30 +17,37 @@ blue_box
   orig: 100, 100
   offset: 0, 0
   index: -1
-green_box
+blue_star
   rotate: false
   xy: 1283, 825
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
-green_star
+green_box
   rotate: false
   xy: 1, 1
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
-grey_box
+green_star
   rotate: false
   xy: 103, 103
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
+grey_box
+  rotate: false
+  xy: 1283, 723
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
 blank
   rotate: false
-  xy: 1283, 822
+  xy: 1385, 924
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
