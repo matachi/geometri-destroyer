@@ -5,49 +5,112 @@ filter: Nearest,Nearest
 repeat: none
 background
   rotate: false
-  xy: 1, 205
+  xy: 1, 218
   size: 1280, 720
   orig: 1280, 720
   offset: 0, 0
   index: -1
+green_rectangle
+  rotate: false
+  xy: 1, 116
+  size: 300, 100
+  orig: 300, 100
+  offset: 0, 0
+  index: -1
+grey_rectangle
+  rotate: false
+  xy: 1283, 838
+  size: 300, 100
+  orig: 300, 100
+  offset: 0, 0
+  index: -1
+blue_triangle
+  rotate: false
+  xy: 1, 13
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
 blue_box
   rotate: false
-  xy: 1, 103
+  xy: 303, 116
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 blue_star
   rotate: false
-  xy: 1283, 825
+  xy: 1283, 736
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 green_box
   rotate: false
-  xy: 1, 1
+  xy: 1585, 838
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+green_cross
+  rotate: false
+  xy: 104, 14
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 green_star
   rotate: false
-  xy: 103, 103
+  xy: 405, 116
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+green_triangle
+  rotate: false
+  xy: 1283, 634
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 grey_box
   rotate: false
-  xy: 1283, 723
+  xy: 1385, 736
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
+grey_cross
+  rotate: false
+  xy: 1687, 838
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+grey_triangle
+  rotate: false
+  xy: 206, 14
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+scroll_bg
+  rotate: false
+  xy: 1, 1
+  size: 50, 10
+  orig: 50, 10
+  offset: 0, 0
+  index: -1
+scroll
+  rotate: false
+  xy: 507, 206
+  size: 45, 10
+  orig: 45, 10
+  offset: 0, 0
+  index: -1
 blank
   rotate: false
-  xy: 1385, 924
+  xy: 1283, 631
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
