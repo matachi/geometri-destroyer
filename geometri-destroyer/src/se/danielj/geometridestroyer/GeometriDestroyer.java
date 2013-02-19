@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -30,7 +31,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private World world;
-//	private Box2DDebugRenderer debugRenderer;
+	private Box2DDebugRenderer debugRenderer;
 	private IngameStage stage;
 	
 	private Core core;
@@ -43,7 +44,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	
 	private int currentLevel;
 	
-	public static final int numberOfLevels = 8;
+	public static final int numberOfLevels = 10;
 	
 	public GeometriDestroyer(Core core, InputMultiplexer inputMultiplexer) {
 		SpriteManager.init();
@@ -58,7 +59,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		
 		world = new World(new Vector2(0, -40), true); 
 		
-//		debugRenderer = new Box2DDebugRenderer();
+		debugRenderer = new Box2DDebugRenderer();
 		
 		stage = new IngameStage(core, world, this);
 		inputMultiplexer.addProcessor(this);
@@ -204,6 +205,34 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 			
 			EntityCreator.createPlayerStar(world, 40, 50, 10, 10);
 			boxesLeft = 47; 
+			break;
+		case 9:
+			EntityCreator.createDestroyableCross(world, 34, 5, 10, 10);
+			EntityCreator.createDestroyableCross(world, 46, 5, 10, 10);
+			
+			EntityCreator.createDestroyableCross(world, 40, 13, 10, 10);
+			
+			EntityCreator.createDestroyableCross(world, 34, 21, 10, 10);
+			EntityCreator.createDestroyableCross(world, 46, 21, 10, 10);
+			
+			EntityCreator.createDestroyableCross(world, 40, 29, 10, 10);
+			
+			EntityCreator.createPlayerBox(world, 38, 38, 8, 8);
+			boxesLeft = 5; 
+			break;
+		case 10:
+			EntityCreator.createDestroyableCross(world, 34, 5, 10, 10);
+			EntityCreator.createSteelCross(world, 46, 5, 10, 10);
+			
+			EntityCreator.createDestroyableCross(world, 40, 13, 10, 10);
+			
+			EntityCreator.createDestroyableCross(world, 34, 21, 10, 10);
+			EntityCreator.createDestroyableCross(world, 46, 21, 10, 10);
+			
+			EntityCreator.createSteelCross(world, 40, 29, 10, 10);
+			
+			EntityCreator.createPlayerBox(world, 38, 38, 8, 8);
+			boxesLeft = 4; 
 			break;
 		default:
 			break;

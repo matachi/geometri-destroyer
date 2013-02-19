@@ -56,6 +56,76 @@ public class EntityCreator {
 		return body;
 	}
 	
+	public static Entity createSteelCross(World world, float x, float y, float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREY_CROSS), width, height, false, false);
+		crossEntity(world, e, x, y, width, height);
+		return e;
+	}
+	
+	public static Entity createDestroyableCross(World world, float x, float y, float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREEN_CROSS), width, height, true, false);
+		crossEntity(world, e, x, y, width, height);
+		return e;
+	}
+	
+	private static Body crossEntity(World world, Entity entity, float x, float y, float width, float height) {
+		float sideW = width / 2;
+		float sideH = height / 2;
+		float diffW = sideW - sideW * 0.4f;
+		float diffH = sideH - sideH * 0.4f;
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.position.set(x, y);
+		Body body = world.createBody(bodyDef);
+		body.setUserData(entity);
+
+		// Left side
+		PolygonShape shape = new PolygonShape();
+		Vector2[] vertices = { new Vector2(-sideW, diffH),
+				new Vector2(-sideW, -diffH), new Vector2(-diffW, -diffH),
+				new Vector2(0, 0), new Vector2(-diffW, diffH) };
+		shape.set(vertices);
+		
+		FixtureDef fixtureDef = new FixtureDef();
+		fixtureDef.shape = shape;
+		fixtureDef.density = 0.5f;
+		fixtureDef.friction = 0.4f;
+		fixtureDef.restitution = 0;
+
+		body.createFixture(fixtureDef);
+		
+		// Top
+		shape = new PolygonShape();
+		vertices = new Vector2[] { new Vector2(-diffW, sideH),
+				new Vector2(-diffW, diffH), new Vector2(0, 0),
+				new Vector2(diffW, diffH), new Vector2(diffW, sideH) };
+		shape.set(vertices);
+		fixtureDef.shape = shape;
+		body.createFixture(fixtureDef);
+		
+		// Right side
+		shape = new PolygonShape();
+		vertices = new Vector2[] { new Vector2(sideW, diffH),
+				new Vector2(diffW, diffH), new Vector2(0, 0),
+				new Vector2(diffW, -diffH), new Vector2(sideW, -diffH) };
+		shape.set(vertices);
+		fixtureDef.shape = shape;
+		body.createFixture(fixtureDef);
+		
+		// Bottom
+		shape = new PolygonShape();
+		vertices = new Vector2[] { new Vector2(diffW, -sideH),
+				new Vector2(diffW, -diffH), new Vector2(0, 0),
+				new Vector2(-diffW, -diffH), new Vector2(-diffW, -sideH) };
+		shape.set(vertices);
+		fixtureDef.shape = shape;
+		body.createFixture(fixtureDef);
+		
+		return body;
+	}
+	
 	public static Entity createPlayerStar(World world, float x, float y, float width, float height) {
 		Entity e = new Entity(
 				SpriteManager.getSprite(SpriteManager.Sprites.BLUE_STAR), width, height, false, true);

@@ -21,6 +21,8 @@ public class SpriteManager {
 		public static final String BLANK = "blank";
 		public static final String GREEN_STAR = "green_star";
 		public static final String BLUE_STAR = "blue_star";
+		public static final String GREEN_CROSS = "green_cross";
+		public static final String GREY_CROSS = "grey_cross";
 		public static final String SCROLL_BG = "scroll_bg";
 		public static final String SCROLL = "scroll";
 	}
