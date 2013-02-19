@@ -1,5 +1,7 @@
 package se.danielj.geometridestroyer;
 
+import se.danielj.geometridestroyer.SpriteManager.Sprites;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
@@ -7,14 +9,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane.ScrollPaneStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class LevelScreen implements Screen {
@@ -35,123 +38,70 @@ public class LevelScreen implements Screen {
 		
 		batch = new SpriteBatch();
 
-		LabelStyle style = new LabelStyle();
-		style.font = FontManager.getNormalFont();
-		style.fontColor = new Color(1, 1, 1, 1);
-		
-		Label level1 = new Label("Level 1", style);
-		level1.setPosition(20, Constants.STAGE_HEIGHT - 70);
-		level1.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				LevelScreen.this.core.game.setLevel(1);
-				LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
-				return true;
-			}
-			
-		});
-		stage.addActor(level1);
-		inputMultiplexer.addProcessor(stage);
-		
-		Label level2 = new Label("Level 2", style);
-		level2.setPosition(20, Constants.STAGE_HEIGHT - 130);
-		level2.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				LevelScreen.this.core.game.setLevel(2);
-				LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
-				return true;
-			}
-			
-		});
-		stage.addActor(level2);
-		inputMultiplexer.addProcessor(stage);
-		
-		Label level3 = new Label("Level 3", style);
-		level3.setPosition(20, Constants.STAGE_HEIGHT - 190);
-		level3.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				LevelScreen.this.core.game.setLevel(3);
-				LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
-				return true;
-			}
-			
-		});
-		stage.addActor(level3);
-		inputMultiplexer.addProcessor(stage);
-		
-		Label level4 = new Label("Level 4", style);
-		level4.setPosition(20, Constants.STAGE_HEIGHT - 250);
-		level4.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				LevelScreen.this.core.game.setLevel(4);
-				LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
-				return true;
-			}
-			
-		});
-		stage.addActor(level4);
-		inputMultiplexer.addProcessor(stage);
-		
-		Label level5 = new Label("Level 5", style);
-		level5.setPosition(20, Constants.STAGE_HEIGHT - 310);
-		level5.addListener(new InputListener() {
-			@Override
-			public boolean touchDown(InputEvent event, float x, float y,
-					int pointer, int button) {
-				LevelScreen.this.core.game.setLevel(5);
-				LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
-				return true;
-			}
-			
-		});
-		stage.addActor(level5);
 		inputMultiplexer.addProcessor(stage);
 		
 		Table table = new Table();
-		table.debug();
 //		table.setPosition(300, 100);
 //		table.setSize(200, 300);
-		table.setBounds(0, 0, 1000, 1000);
+//		table.setBounds(0, 0, 1000, 1000);
 //		table.setFillParent(true);
-		table.debug();
-		table.row();
-		table.add(new Label("HEJ", style)).width(100).height(100);
-		table.row();
-		table.add(new Label("HEJ", style)).width(100).height(100);
-		table.row();
-		table.add(new Label("HEJ", style)).width(100).height(100);
-		table.row();
-		table.add(new Label("HEJ", style)).width(100).height(100);
-		table.row();
-		table.add(new Label("HEJ", style)).width(100).height(100);
+		for (int i = 1; i <= GeometriDestroyer.numberOfLevels; ++i) {
+//		for (int i = 1; i < 7; ++i) {
+			table.row();
+			table.add(new LevelButton(i)).height(80);
+//			stage.addActor(new LevelButton(i));
+		}
 		ScrollPane scrollPane = new ScrollPane(table);
-		Label l = new Label("HEJJJJJJJ", style);
-		l.setWidth(500);
-		l.setHeight(500);
-		l.setColor(new Color(0, 0, 0, 1));
-//		ScrollPane scrollPane = new ScrollPane(l);
-		scrollPane.setPosition(300, 100);
-		scrollPane.setSize(600, 300);
+		scrollPane.setPosition(0, 100);
+		scrollPane.setSize(600, 460);
 //		scrollPane.setScrollbarsOnTop(true);
 		scrollPane.setFadeScrollBars(false);
 		ScrollPaneStyle scrollPaneStyle = new ScrollPaneStyle();
-//		scrollPaneStyle.hScroll = SpriteManager.getSprite(SpriteManager.Sprites.BLUE_BOX);
-		scrollPaneStyle.vScrollKnob = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.BLUE_BOX));
+		scrollPaneStyle.vScrollKnob = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.SCROLL));
+		scrollPaneStyle.vScroll = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.SCROLL_BG));
 		scrollPane.setStyle(scrollPaneStyle);
-//		scrollPane.
-//		scrollPane.setColor(new Color(1, 1, 1, 1));
-//		scrollPane.setFillParent(true);
-//		scrollPane.setScrollingDisabled(false, false);
-//		scrollPane.setBounds(300, 100, 100, 50);
 		stage.addActor(scrollPane);
-//		stage.addActor(table);
+	}
+	
+	private class LevelButton extends Group {
+		private TextButton button;
+		public LevelButton(final int num) {
+			final TextButtonStyle style = new TextButtonStyle();
+			style.font = FontManager.getNormalFont();
+			style.up = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.BLANK));
+			style.down = new TextureRegionDrawable(SpriteManager.getSprite(SpriteManager.Sprites.BLANK));
+			style.fontColor = new Color(0.5f, 0, 0, 1);
+			style.downFontColor = new Color(0, 0.4f, 0, 1);
+			
+			button = new TextButton("Level " + num, style);
+//			button.setPosition(20, Constants.STAGE_HEIGHT - 10 - 60 * num);
+			button.addListener(new LevelButtonListener() {
+				@Override
+				protected void action() {
+					LevelScreen.this.core.game.setLevel(num);
+					LevelScreen.this.core.setScreen(LevelScreen.this.core.game);
+				}
+			});
+			this.addActor(button);
+		}
+		
+		protected abstract class LevelButtonListener extends InputListener {
+			private float y;
+			@Override
+			public boolean touchDown(InputEvent event, float x, float y,
+					int pointer, int button) {
+				this.y = y;
+				return true;
+			}
+			@Override
+			public void touchUp(InputEvent event, float x, float y,
+					int pointer, int button) {
+				if (Math.abs(this.y - y) < 20) {
+					action();
+				}
+			}
+			protected abstract void action();
+		}
 	}
 
 	@Override
@@ -161,7 +111,7 @@ public class LevelScreen implements Screen {
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-//		batch.draw(SpriteManager.getSprite(Sprites.DARK_BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
+		batch.draw(SpriteManager.getSprite(Sprites.DARK_BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
 		batch.end();
 		
 		stage.act(Gdx.graphics.getDeltaTime());
