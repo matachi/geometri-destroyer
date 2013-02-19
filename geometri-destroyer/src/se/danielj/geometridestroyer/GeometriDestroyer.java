@@ -3,6 +3,7 @@ package se.danielj.geometridestroyer;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import se.danielj.geometridestroyer.SpriteManager.Sprites;
 
@@ -41,6 +42,8 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	private VictoryChecker victoryChecker;
 	
 	private int currentLevel;
+	
+	public static final int numberOfLevels = 8;
 	
 	public GeometriDestroyer(Core core, InputMultiplexer inputMultiplexer) {
 		SpriteManager.init();
@@ -165,6 +168,42 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 			
 			EntityCreator.createPlayerStar(world, 39.97f, 35, 10, 10);
 			boxesLeft = 7;
+			break;
+		case 6:
+			EntityCreator.createDestroyableBox(world, 40, 4f, 8, 8);
+			
+			EntityCreator.createDestroyableBox(world, 35, 10.5f, 5, 5);
+			EntityCreator.createSteelBox(world, 45, 10.5f, 5, 5);
+			
+			EntityCreator.createDestroyableBox(world, 40, 17f, 8, 8);
+			
+			EntityCreator.createSteelBox(world, 35, 23.5f, 5, 5);
+			EntityCreator.createDestroyableBox(world, 45, 23.5f, 5, 5);
+			
+			EntityCreator.createDestroyableBox(world, 40, 30f, 8, 8);
+			
+			EntityCreator.createPlayerStar(world, 40, 35.5f, 3, 3);
+			boxesLeft = 5;
+			break;
+		case 7:
+			Random r = new Random();
+			for (int i = 1; i < 50; ++i) {
+				int sign = (r.nextFloat() > 0.5f) ? 1 : -1;
+				EntityCreator.createDestroyableBox(world, sign * r.nextFloat() * r.nextFloat() * 40 + 40, 10 + 30 * r.nextFloat(), 3, 3);
+			}
+			
+			EntityCreator.createPlayerStar(world, 40, 50, 10, 10);
+			boxesLeft = 45; 
+			break;
+		case 8:
+			Random r2 = new Random();
+			for (int i = 1; i < 50; ++i) {
+				int sign = (r2.nextFloat() > 0.5f) ? 1 : -1;
+				EntityCreator.createDestroyableStar(world, sign * r2.nextFloat() * r2.nextFloat() * 40 + 40, 10 + 30 * r2.nextFloat(), 3, 3);
+			}
+			
+			EntityCreator.createPlayerStar(world, 40, 50, 10, 10);
+			boxesLeft = 47; 
 			break;
 		default:
 			break;
