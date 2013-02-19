@@ -29,8 +29,8 @@ public class IngameStage extends Stage {
 		LabelStyle style = new LabelStyle();
 		style.font = FontManager.getNormalFont();
 		style.fontColor = new Color(0, 0, 0, 1);
-		objectCounter = new Label("Objects: " + (world.getBodyCount() - 1) + " Object left: " + geometriDestroyer.boxesLeft, style);
-		objectCounter.setPosition(20, Constants.STAGE_HEIGHT - 70);
+		objectCounter = new Label("Total Number Of Objects: " + (world.getBodyCount() - 1) + "\nObject left To Destroy: " + geometriDestroyer.boxesLeft, style);
+		objectCounter.setPosition(20, Constants.STAGE_HEIGHT - 120);
 		addActor(objectCounter );
 		
 		gameOverMenu = new GameOverMenu(core);
@@ -58,7 +58,7 @@ public class IngameStage extends Stage {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		objectCounter.setText("Objects: " + (world.getBodyCount() - 1) + " Object left: " + geometriDestroyer.boxesLeft);
+		objectCounter.setText("Total Number Of Objects: " + (world.getBodyCount() - 1) + "\nObject left To Destroy: " + geometriDestroyer.boxesLeft);
 	}
 	
 	private class VictoryMenu extends Menu {
