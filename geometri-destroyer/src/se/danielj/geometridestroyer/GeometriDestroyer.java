@@ -44,7 +44,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	
 	private int currentLevel;
 	
-	public static final int numberOfLevels = 10;
+	public static final int numberOfLevels = 14;
 	
 	public GeometriDestroyer(Core core, InputMultiplexer inputMultiplexer) {
 		SpriteManager.init();
@@ -234,6 +234,85 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 			EntityCreator.createPlayerBox(world, 38, 38, 8, 8);
 			boxesLeft = 4; 
 			break;
+		case 11:
+			EntityCreator.createDestroyableBox(world, 15, 5, 10, 10);
+			EntityCreator.createDestroyableBox(world, 40, 5, 10, 10);
+			EntityCreator.createDestroyableBox(world, 65, 5, 10, 10);
+			
+			EntityCreator.createDestroyableRectangle(world, 25, 15, 30, 10);
+			EntityCreator.createDestroyableRectangle(world, 55, 15, 30, 10);
+			
+			EntityCreator.createDestroyableBox(world, 15, 25, 10, 10);
+			EntityCreator.createSteelBox(world, 40, 25, 10, 10);
+			EntityCreator.createDestroyableBox(world, 65, 25, 10, 10);
+			
+			EntityCreator.createDestroyableRectangle(world, 25, 35, 30, 10);
+			EntityCreator.createDestroyableRectangle(world, 55, 35, 30, 10);
+			
+			EntityCreator.createPlayerBox(world, 35, 45, 10, 10);
+			boxesLeft = 9; 
+			break;
+		case 12:
+			EntityCreator.createDestroyableBox(world, 35, 5, 10, 10);
+			
+			EntityCreator.createSteelRectangle(world, 30, 25, 30, 10, (float)(Math.PI / 2));
+			EntityCreator.createDestroyableBox(world, 40, 15, 10, 10);
+			
+			EntityCreator.createDestroyableBox(world, 40, 25, 10, 10);
+			
+			EntityCreator.createDestroyableBox(world, 40, 35, 10, 10);
+			
+			EntityCreator.createPlayerBox(world, 35, 45, 10, 10);
+			boxesLeft = 3; 
+			break;
+		case 13:
+			EntityCreator.createDestroyableTriangle(world, 15, 5, 10, 10);
+			EntityCreator.createDestroyableTriangle(world, 25, 5, 10, 10);
+			EntityCreator.createDestroyableTriangle(world, 35, 5, 10, 10);
+			EntityCreator.createDestroyableTriangle(world, 45, 5, 10, 10);
+			EntityCreator.createDestroyableTriangle(world, 55, 5, 10, 10);
+			EntityCreator.createDestroyableTriangle(world, 65, 5, 10, 10);
+			
+			EntityCreator.createDestroyableTriangle(world, 20, 16, 12, 12);
+			EntityCreator.createDestroyableTriangle(world, 40, 16, 12, 12);
+			EntityCreator.createDestroyableTriangle(world, 60, 16, 12, 12);
+			
+			EntityCreator.createDestroyableRectangle(world, 30, 27, 20, 7.5f);
+			
+			EntityCreator.createPlayerTriangle(world, 45, 37, 10, 10);
+			boxesLeft = 8; 
+			break;
+		case 14:
+			EntityCreator.createSteelTriangle(world, 10, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 16, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 22, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 28, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 40, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 46, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 52, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 58, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 64, 3, 6, 6);
+			EntityCreator.createSteelTriangle(world, 70, 3, 6, 6);
+			
+			EntityCreator.createDestroyableTriangle(world, 13, 10, 8, 8);
+			EntityCreator.createDestroyableBox(world, 25, 10, 8, 8);
+			EntityCreator.createDestroyableBox(world, 43, 10, 8, 8);
+			EntityCreator.createDestroyableTriangle(world, 55, 10, 8, 8);
+			EntityCreator.createDestroyableTriangle(world, 67, 10, 8, 8);
+			
+			EntityCreator.createDestroyableBox(world, 17, 19, 10, 10);
+			EntityCreator.createDestroyableBox(world, 30, 18, 8, 8);
+			EntityCreator.createDestroyableBox(world, 38, 18, 8, 8);
+			EntityCreator.createDestroyableBox(world, 47.7f, 17.3f, 6.6f, 6.6f);
+			EntityCreator.createDestroyableRectangle(world, 61, 17.3f, 20, 6.6f);
+			
+			EntityCreator.createDestroyableBox(world, 26, 26, 8, 8);
+			EntityCreator.createDestroyableBox(world, 34, 26, 8, 8);
+			EntityCreator.createDestroyableBox(world, 52, 25.3f, 9.4f, 9.4f);
+			
+			EntityCreator.createPlayerBox(world, 30, 34, 8, 8);
+			boxesLeft = 13; 
+			break;
 		default:
 			break;
 		}
@@ -292,7 +371,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		stage.act();
 		stage.draw();
 		
-//		debugRenderer.render(world, camera.combined);
+		debugRenderer.render(world, camera.combined);
 	}
 
 	@Override

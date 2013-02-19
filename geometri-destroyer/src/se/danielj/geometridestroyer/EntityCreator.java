@@ -56,6 +56,103 @@ public class EntityCreator {
 		return body;
 	}
 	
+	public static Entity createSteelTriangle(World world, float x, float y,
+			float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREY_TRIANGLE), width, height, false, false);
+		triangleEntity(world, e, x, y, width, height);
+		return e;
+	}
+	
+	public static Entity createPlayerTriangle(World world, float x, float y,
+			float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.BLUE_TRIANGLE), width, height, false, true);
+		triangleEntity(world, e, x, y, width, height);
+		return e;
+	}
+
+	public static Entity createDestroyableTriangle(World world, float x, float y,
+			float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREEN_TRIANGLE), width, height, true, false);
+		triangleEntity(world, e, x, y, width, height);
+		return e;
+	}
+	
+	private static Body triangleEntity(World world, Entity entity, float x, float y, float width, float height) {
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.position.set(x, y);
+		Body body = world.createBody(bodyDef);
+		body.setUserData(entity);
+
+		PolygonShape shape = new PolygonShape();
+		Vector2[] vertices = { new Vector2(-width / 2, -height / 2),
+				new Vector2(width / 2, -height / 2), new Vector2(0, height / 2) };
+		shape.set(vertices);
+
+		FixtureDef fixtureDef = new FixtureDef();
+		fixtureDef.shape = shape;
+		fixtureDef.density = 0.5f;
+		fixtureDef.friction = 0.4f;
+		fixtureDef.restitution = 0;
+
+		body.createFixture(fixtureDef);
+		
+		return body;
+	}
+	
+	public static Entity createSteelRectangle(World world, float x, float y,
+			float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREY_RECTANGLE), width, height, false, false);
+		rectangleEntity(world, e, x, y, width, height, 0);
+		return e;
+	}
+	
+	public static Entity createSteelRectangle(World world, float x, float y,
+			float width, float height, float angle) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREY_RECTANGLE), width, height, false, false);
+		rectangleEntity(world, e, x, y, width, height, angle);
+		return e;
+	}
+	
+	public static Entity createDestroyableRectangle(World world, float x, float y,
+			float width, float height) {
+		Entity e = new Entity(
+				SpriteManager.getSprite(SpriteManager.Sprites.GREEN_RECTANGLE), width, height, true, false);
+		rectangleEntity(world, e, x, y, width, height, 0);
+		return e;
+	}
+	
+	private static Body rectangleEntity(World world, Entity entity, float x, float y, float width, float height, float angle) {
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.type = BodyType.DynamicBody;
+		bodyDef.position.set(x, y);
+		Body body = world.createBody(bodyDef);
+		body.setUserData(entity);
+		body.setTransform(x, y, angle);
+
+		PolygonShape shape = new PolygonShape();
+		Vector2[] vertices = { new Vector2(-width / 2, height / 2),
+				new Vector2(-width / 2, -height / 2),
+				new Vector2(width / 2, -height / 2),
+				new Vector2(width / 2, height / 2) };
+		shape.set(vertices);
+
+		FixtureDef fixtureDef = new FixtureDef();
+		fixtureDef.shape = shape;
+		fixtureDef.density = 0.5f;
+		fixtureDef.friction = 0.4f;
+		fixtureDef.restitution = 0;
+
+		body.createFixture(fixtureDef);
+		
+		return body;
+	}
+	
 	public static Entity createSteelCross(World world, float x, float y, float width, float height) {
 		Entity e = new Entity(
 				SpriteManager.getSprite(SpriteManager.Sprites.GREY_CROSS), width, height, false, false);
