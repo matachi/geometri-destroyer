@@ -377,9 +377,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="-282.34231"
-     inkscape:cy="395.67901"
+     inkscape:zoom="0.25"
+     inkscape:cx="393.2828"
+     inkscape:cy="408.04061"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -396,7 +396,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -448,44 +448,65 @@
        d="m 148,706.28525 -48.076923,96.15385 96.153843,0 z"
        id="path3137"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/green_triangle.png"
+       inkscape:export-xdpi="87.912086"
+       inkscape:export-ydpi="87.912086" />
     <path
        style="fill:url(#radialGradient5382);fill-opacity:1;stroke:#000000;stroke-width:3.84615397;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 280,706.28525 -48.07692,96.15385 96.15384,0 z"
        id="path3137-9"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/blue_triangle.png"
+       inkscape:export-xdpi="88.615387"
+       inkscape:export-ydpi="88.615387" />
     <path
        style="fill:url(#radialGradient5416);fill-opacity:1;stroke:#000000;stroke-width:3.84615397;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 401,707.28526 -48.07692,96.15384 96.15385,0 z"
        id="path3137-9-3"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/grey_triangle.png"
+       inkscape:export-xdpi="87.912086"
+       inkscape:export-ydpi="87.912086" />
     <rect
        style="fill:url(#linearGradient5450);fill-opacity:1;stroke:#000000;stroke-width:3.89576674;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:33.20000076;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-1"
        width="296.10422"
        height="96.104233"
        x="21.347191"
-       y="280.91074" />
+       y="280.91074"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/green_rectangle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
        style="fill:url(#linearGradient5518);fill-opacity:1;stroke:#000000;stroke-width:3.89576674;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:33.20000076;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect2985-1-5"
        width="296.10422"
        height="96.104233"
        x="21.947884"
-       y="168.31006" />
+       y="168.31006"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/grey_rectangle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <path
        style="fill:url(#linearGradient5545);stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-start:none"
        d="m 30,52.362183 20,0 0,-20 60,0 0,20 20,0 0,59.999997 -20,0 c 0,0 0.0884,20 0,20 -3.55317,1.4e-4 -60,0 -60,0 l 0,-20 -20,0 z"
        id="path5537"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccscccc" />
+       sodipodi:nodetypes="ccccccccscccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/green_cross.png"
+       inkscape:export-xdpi="86.53846"
+       inkscape:export-ydpi="86.53846" />
     <path
        style="fill:url(#linearGradient5742);fill-opacity:1.0;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none"
        d="m 151.52543,52.211647 20.00001,0 0,-20 60,0 0,20 20,0 0,59.999993 -20,0 c 0,0 0.0884,20.00001 0,20.00001 -3.55317,1.4e-4 -60,0 -60,0 l 0,-20.00001 -20.00001,0 z"
        id="path5537-9"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccccccscccc" />
+       sodipodi:nodetypes="ccccccccscccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/images/grey_cross.png"
+       inkscape:export-xdpi="86.53846"
+       inkscape:export-ydpi="86.53846" />
   </g>
 </svg>
