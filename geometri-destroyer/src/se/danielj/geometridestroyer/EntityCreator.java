@@ -126,8 +126,15 @@ public class EntityCreator {
 		Body body = world.createBody(bodyDef);
 
 		EdgeShape shape = new EdgeShape();
-		shape.set(-Constants.WIDTH, 0, 2 * Constants.WIDTH, 0);
+		shape.set(0, 0, Constants.WIDTH, 0);
+		body.createFixture(shape, 0);
 		
+		shape = new EdgeShape();
+		shape.set(0, 0, 0, Constants.HEIGHT);
+		body.createFixture(shape, 0);
+		
+		shape = new EdgeShape();
+		shape.set(Constants.WIDTH, 0, Constants.WIDTH, Constants.HEIGHT);
 		body.createFixture(shape, 0);
 	}
 }
