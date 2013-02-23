@@ -1,4 +1,4 @@
-package se.danielj.geometridestroyer;
+package se.danielj.geometridestroyer.misc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +30,7 @@ public class SpriteManager {
 		public static final String GREY_RECTANGLE = "grey_rectangle";
 		public static final String SCROLL_BG = "scroll_bg";
 		public static final String SCROLL = "scroll";
+		public static final String OGAM = "1gam-logo";
 	}
 	
 	public static void init() {

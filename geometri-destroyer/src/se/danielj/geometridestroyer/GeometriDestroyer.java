@@ -5,7 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import se.danielj.geometridestroyer.SpriteManager.Sprites;
+import se.danielj.geometridestroyer.misc.SpriteManager;
+import se.danielj.geometridestroyer.misc.SpriteManager.Sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -17,7 +18,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -31,7 +31,6 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private World world;
-	private Box2DDebugRenderer debugRenderer;
 	private IngameStage stage;
 	
 	private Core core;
@@ -46,10 +45,11 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	
 	public static final int numberOfLevels = 14;
 	
+	private Renderer normalRenderer;
+	private Renderer pauseRenderer;
+	private Renderer renderer;
+	
 	public GeometriDestroyer(Core core, InputMultiplexer inputMultiplexer) {
-		SpriteManager.init();
-		FontManager.init();
-		
 		this.core = core;
 		
 		camera = new OrthographicCamera(Constants.WIDTH, Constants.HEIGHT);
@@ -58,8 +58,6 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		batch = new SpriteBatch();
 		
 		world = new World(new Vector2(0, -40), true); 
-		
-		debugRenderer = new Box2DDebugRenderer();
 		
 		stage = new IngameStage(core, world, this);
 		inputMultiplexer.addProcessor(this);
@@ -89,6 +87,66 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		});
 		
 		victoryChecker = new NullVictoryChecker();
+		
+		pauseRenderer = new Renderer() {
+			@Override
+			public void render() {
+				Gdx.gl.glClearColor(1, 1, 1, 1);
+				Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+				
+				batch.setProjectionMatrix(camera.combined);
+				batch.begin();
+				batch.draw(SpriteManager.getSprite(Sprites.BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
+				Iterator<Body> i = world.getBodies();
+				while (i.hasNext()) {
+					// Draw entities
+					Body body = i.next();
+					if (body.getUserData() instanceof Entity) {
+						Entity entity = (Entity) body.getUserData();
+						entity.draw(batch, body);
+					}
+				}
+				batch.end();
+				
+				// Check if victory
+				victoryChecker.check();
+				
+				stage.act();
+				stage.draw();
+			}
+		};
+		
+		normalRenderer = new Renderer() {
+			@Override
+			public void render() {
+				world.step(1/60f, 6, 2);
+				
+				Gdx.gl.glClearColor(1, 1, 1, 1);
+				Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+				
+				batch.setProjectionMatrix(camera.combined);
+				batch.begin();
+				batch.draw(SpriteManager.getSprite(Sprites.BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
+				Iterator<Body> i = world.getBodies();
+				while (i.hasNext()) {
+					// Draw entities
+					Body body = i.next();
+					if (body.getUserData() instanceof Entity) {
+						Entity entity = (Entity) body.getUserData();
+						entity.draw(batch, body);
+					}
+				}
+				batch.end();
+				
+				// Check if victory
+				victoryChecker.check();
+				
+				stage.act();
+				stage.draw();
+			}
+		};
+		
+		renderer = normalRenderer;
 	}
 	
 	public void setLevel(int level) {
@@ -339,39 +397,15 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		batch.dispose();
 		stage.dispose();
 		world.dispose();
-		SpriteManager.dispose();
-		FontManager.dispose();
 	}
 
 	@Override
 	public void render(float delta) {		
-		
-		world.step(1/60f, 6, 2);
-		
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		batch.draw(SpriteManager.getSprite(Sprites.BACKGROUND), 0, 0, Constants.WIDTH, Constants.HEIGHT);
-		Iterator<Body> i = world.getBodies();
-		while (i.hasNext()) {
-			// Draw entities
-			Body body = i.next();
-			if (body.getUserData() instanceof Entity) {
-				Entity entity = (Entity) body.getUserData();
-				entity.draw(batch, body);
-			}
-		}
-		batch.end();
-		
-		// Check if victory
-		victoryChecker.check();
-		
-		stage.act();
-		stage.draw();
-		
-		debugRenderer.render(world, camera.combined);
+		renderer.render();
+	}
+	
+	private interface Renderer {
+		public void render();
 	}
 
 	@Override
@@ -380,6 +414,17 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 
 	@Override
 	public void pause() {
+		if (gameRunning) {
+			gameRunning = false;
+			renderer = pauseRenderer;
+			stage.pause();
+		}
+	}
+	
+	public void run() {
+		gameRunning = true;
+		renderer = normalRenderer;
+		stage.reset();
 	}
 
 	@Override
@@ -471,14 +516,13 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 	@Override
 	public void show() {
 		gameRunning = true;
+		renderer = normalRenderer;
 		stage.reset();
 		victoryChecker = new NullVictoryChecker();
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	private interface VictoryChecker {

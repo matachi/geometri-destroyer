@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg3302"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="icon.svg">
+  <defs
+     id="defs3304">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4199">
+      <stop
+         style="stop-color:#7a002c;stop-opacity:1;"
+         offset="0"
+         id="stop4201" />
+      <stop
+         style="stop-color:#7a002c;stop-opacity:0;"
+         offset="1"
+         id="stop4203" />
+    </linearGradient>
+    <radialGradient
+       gradientTransform="matrix(0.96153849,0,0,0.96153856,135.76924,30.936953)"
+       r="50.5"
+       fy="752.36218"
+       fx="150"
+       cy="752.36218"
+       cx="150"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient5382"
+       xlink:href="#linearGradient5463-6"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient5463-6">
+      <stop
+         id="stop5465-0"
+         offset="0"
+         style="stop-color:#4bd5ff;stop-opacity:1;" />
+      <stop
+         style="stop-color:#d0eef0;stop-opacity:1;"
+         offset="1"
+         id="stop5467-7" />
+    </linearGradient>
+    <radialGradient
+       r="50.5"
+       fy="752.36218"
+       fx="150"
+       cy="752.36218"
+       cx="150"
+       gradientTransform="matrix(0.96153849,0,0,0.96153856,246.69827,-532.72316)"
+       gradientUnits="userSpaceOnUse"
+       id="radialGradient3325"
+       xlink:href="#linearGradient5463-6"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5219"
+       id="linearGradient5217"
+       x1="120.85713"
+       y1="405.64789"
+       x2="223.85715"
+       y2="475.64789"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(0.00390625,-0.0703125)" />
+    <linearGradient
+       id="linearGradient5219">
+      <stop
+         style="stop-color:#6dd93e;stop-opacity:1;"
+         offset="0"
+         id="stop5225" />
+      <stop
+         id="stop5223"
+         offset="1"
+         style="stop-color:#beffa1;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       y2="475.64789"
+       x2="223.85715"
+       y1="405.64789"
+       x1="120.85713"
+       gradientTransform="translate(282.67089,-149.82905)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient3359"
+       xlink:href="#linearGradient5219"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientTransform="translate(121.52543,-0.15053559)"
+       y2="65.112213"
+       x2="129.75"
+       y1="82.362213"
+       x1="29.5"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient5742"
+       xlink:href="#linearGradient5463"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient5463">
+      <stop
+         id="stop5465"
+         offset="0"
+         style="stop-color:#8b8b8b;stop-opacity:1;" />
+      <stop
+         style="stop-color:#d0d0d0;stop-opacity:1;"
+         offset="1"
+         id="stop5467" />
+    </linearGradient>
+    <linearGradient
+       y2="65.112213"
+       x2="129.75"
+       y1="82.362213"
+       x1="29.5"
+       gradientTransform="translate(259.41126,217.43633)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient3410"
+       xlink:href="#linearGradient5463"
+       inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4199"
+       id="linearGradient4205"
+       x1="229.91643"
+       y1="297.61389"
+       x2="589.65338"
+       y2="187.88875"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="171.78637"
+     inkscape:cy="688.81409"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1631"
+     inkscape:window-height="1026"
+     inkscape:window-x="1729"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3307">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="arc"
+       style="fill:url(#linearGradient4205);fill-opacity:1;fill-rule:nonzero;stroke:#a0a0a0;stroke-width:3.999511;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path3429"
+       sodipodi:cx="390.42395"
+       sodipodi:cy="258.88736"
+       sodipodi:rx="177.28177"
+       sodipodi:ry="145.96704"
+       d="m 564.88781,232.96534 a 177.28177,145.96704 0 1 1 -0.024,-0.10909"
+       sodipodi:start="6.1046502"
+       sodipodi:end="12.387076"
+       transform="matrix(-0.64985234,0,0,-0.78926715,651.00259,473.03771)"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/geometri-destroyer-android/res/drawable-xhdpi/ic_launcher.png"
+       inkscape:export-xdpi="34.951878"
+       inkscape:export-ydpi="34.951878" />
+    <path
+       style="fill:url(#radialGradient3325);fill-opacity:1;stroke:#000000;stroke-width:3.84615397;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 390.92903,142.62514 -48.07692,96.15385 96.15384,0 z"
+       id="path3137-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/geometri-destroyer-android/res/drawable-xhdpi/ic_launcher.png"
+       inkscape:export-xdpi="34.951878"
+       inkscape:export-ydpi="34.951878" />
+    <rect
+       style="fill:url(#linearGradient3359);fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:33.20000076;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect2985"
+       width="100"
+       height="100"
+       x="400.52802"
+       y="251.81883"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/geometri-destroyer-android/res/drawable-xhdpi/ic_launcher.png"
+       inkscape:export-xdpi="34.951878"
+       inkscape:export-ydpi="34.951878" />
+    <path
+       style="fill:url(#linearGradient3410);fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none"
+       d="m 289.41126,269.79851 20.00001,0 0,-20 60,0 0,20 20,0 0,60 -20,0 c 0,0 0.0884,20 0,20 -3.55317,1.4e-4 -60,0 -60,0 l 0,-20 -20.00001,0 z"
+       id="path5537-9"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccscccc"
+       inkscape:export-filename="/home/matachi/games/geometri-destroyer/geometri-destroyer-android/res/drawable-xhdpi/ic_launcher.png"
+       inkscape:export-xdpi="34.951878"
+       inkscape:export-ydpi="34.951878" />
+  </g>
+</svg>

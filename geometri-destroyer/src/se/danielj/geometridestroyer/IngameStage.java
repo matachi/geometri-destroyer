@@ -1,5 +1,8 @@
 package se.danielj.geometridestroyer;
 
+import se.danielj.geometridestroyer.misc.FontManager;
+import se.danielj.geometridestroyer.misc.SpriteManager;
+
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -18,6 +21,7 @@ public class IngameStage extends Stage {
 	private Label objectCounter;
 	private GameOverMenu gameOverMenu;
 	private VictoryMenu victoryMenu;
+	private PauseMenu pauseMenu;
 	private GeometriDestroyer geometriDestroyer;
 
 	public IngameStage(final Core core, World world, GeometriDestroyer geometriDestroyer) {
@@ -31,7 +35,7 @@ public class IngameStage extends Stage {
 		style.fontColor = new Color(0, 0, 0, 1);
 		objectCounter = new Label("Total Number Of Objects: " + (world.getBodyCount() - 1) + "\nObject left To Destroy: " + geometriDestroyer.boxesLeft, style);
 		objectCounter.setPosition(20, Constants.STAGE_HEIGHT - 120);
-		addActor(objectCounter );
+		addActor(objectCounter);
 		
 		gameOverMenu = new GameOverMenu(core);
 		gameOverMenu.setVisible(false);
@@ -40,11 +44,16 @@ public class IngameStage extends Stage {
 		victoryMenu = new VictoryMenu(core);
 		victoryMenu.setVisible(false);
 		addActor(victoryMenu);
+		
+		pauseMenu = new PauseMenu(core);
+		pauseMenu.setVisible(false);
+		addActor(pauseMenu);
 	}
 	
 	public void reset() {
 		gameOverMenu.setVisible(false);
 		victoryMenu.setVisible(false);
+		pauseMenu.setVisible(false);
 	}
 	
 	public void gameOver() {
@@ -54,11 +63,33 @@ public class IngameStage extends Stage {
 	public void victory() {
 		victoryMenu.setVisible(true);
 	}
+	
+	public void pause() {
+		pauseMenu.setVisible(true);
+	}
 
 	@Override
 	public void act(float delta) {
 		super.act(delta);
 		objectCounter.setText("Total Number Of Objects: " + (world.getBodyCount() - 1) + "\nObject left To Destroy: " + geometriDestroyer.boxesLeft);
+	}
+	
+	private class PauseMenu extends Menu {
+		public PauseMenu(final Core core) {
+			super("Game Paused");
+			addButton("Resume", 1, new MenuButtonListener() {
+				@Override
+				protected void action() {
+					geometriDestroyer.run();
+				}
+			});
+			addButton("Return to Main Menu", 2, new MenuButtonListener() {
+				@Override
+				protected void action() {
+					core.setScreen(core.levelScreen);
+				}
+			});
+		}
 	}
 	
 	private class VictoryMenu extends Menu {
