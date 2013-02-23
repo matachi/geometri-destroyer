@@ -1,0 +1,136 @@
+
+sprites.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+background
+  rotate: false
+  xy: 1, 221
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
+1gam-logo
+  rotate: false
+  xy: 1, 115
+  size: 384, 104
+  orig: 384, 104
+  offset: 0, 0
+  index: -1
+green_rectangle
+  rotate: false
+  xy: 1283, 841
+  size: 300, 100
+  orig: 300, 100
+  offset: 0, 0
+  index: -1
+grey_rectangle
+  rotate: false
+  xy: 1, 13
+  size: 300, 100
+  orig: 300, 100
+  offset: 0, 0
+  index: -1
+blue_triangle
+  rotate: false
+  xy: 387, 118
+  size: 101, 101
+  orig: 101, 101
+  offset: 0, 0
+  index: -1
+blue_box
+  rotate: false
+  xy: 1283, 739
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+blue_star
+  rotate: false
+  xy: 1585, 841
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+green_box
+  rotate: false
+  xy: 490, 119
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+green_cross
+  rotate: false
+  xy: 1283, 637
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+green_star
+  rotate: false
+  xy: 1385, 739
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+green_triangle
+  rotate: false
+  xy: 1687, 841
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+grey_box
+  rotate: false
+  xy: 592, 119
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+grey_cross
+  rotate: false
+  xy: 1283, 535
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+grey_triangle
+  rotate: false
+  xy: 1385, 637
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+scroll_bg
+  rotate: false
+  xy: 1, 1
+  size: 50, 10
+  orig: 50, 10
+  offset: 0, 0
+  index: -1
+scroll
+  rotate: false
+  xy: 303, 103
+  size: 45, 10
+  orig: 45, 10
+  offset: 0, 0
+  index: -1
+blank
+  rotate: false
+  xy: 387, 115
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+
+sprites2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+background_dark
+  rotate: false
+  xy: 1, 1
+  size: 1280, 720
+  orig: 1280, 720
+  offset: 0, 0
+  index: -1
