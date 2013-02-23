@@ -459,7 +459,7 @@ public class GeometriDestroyer implements Screen, InputProcessor {
 		world.QueryAABB(new QueryCallback() {
 			@Override
 			public boolean reportFixture(Fixture fixture) {
-				if (((Entity)fixture.getBody().getUserData()).isDestroyable()) {
+				if (fixture.getBody().getUserData() instanceof Entity && ((Entity)fixture.getBody().getUserData()).isDestroyable()) {
 					if (gameRunning) {
 						world.destroyBody(fixture.getBody());
 						if (boxesLeft > 0) {
