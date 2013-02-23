@@ -7,6 +7,5 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="lib" path="/geometri-destroyer/libs/gdx.jar" sourcepath="/geometri-destroyer/libs/gdx-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/geometri-destroyer/libs/bodyeditor-loader.jar" sourcepath="/geometri-destroyer/libs/bodyeditor-loader-sources.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
