@@ -4,6 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
+/**
+ * 
+ * @author Daniel Jonsson
+ * @license GNU GPLv3
+ *
+ */
 public class FontManager {
 
 	private static BitmapFont normalFont;

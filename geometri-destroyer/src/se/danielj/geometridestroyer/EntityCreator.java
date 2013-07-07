@@ -11,6 +11,12 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
+/**
+ * 
+ * @author Daniel Jonsson
+ * @license GNU GPLv3
+ *
+ */
 public class EntityCreator {
 
 	public static Entity createSteelBox(World world, float x, float y,
